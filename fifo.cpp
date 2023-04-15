@@ -54,10 +54,19 @@ bool Queue::pull(Data &tmpData) {
         tmpData.id = head->data.id;
         tmpData.data = head->data.data;
 
-        Node* tmpNode = head;
-        head = head->prev;
-        head->next = NULL;
-        delete tmpNode;
+        if(head == tail) {
+            Node *tmpNode = head;
+            head = NULL;
+            tail = NULL;
+            delete tmpNode;
+        } else {
+            Node *tmpNode = head;
+            head = head->prev;
+            head->next = NULL;
+            delete tmpNode;
+        }
+
+        pulled = true;
     }
 
     return pulled;
@@ -84,7 +93,7 @@ void Queue::printQueue() {
     cout << "PRINTING QUEUE: \n";
     while(current) {
         if(current == head) {
-            cout << current->data.id << "\t(HEAD)\n";
+            cout << current->data.id << "\t(HEAD)\n\n";
         } else if (current == tail) {
             cout << current->data.id << "\t(TAIL)\n";
         } else {
