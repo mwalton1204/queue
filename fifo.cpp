@@ -29,3 +29,8 @@ bool Queue::peek(Data &tmpData) {
 bool Queue::isEmpty() {
     return true;
 }
+
+Node* Queue::createNode(int newId, string* newData) {
+    Node *newNode = new Node{{newId, *newData}, NULL};
+    return newNode;
+}

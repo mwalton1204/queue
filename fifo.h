@@ -31,6 +31,8 @@ public:
     bool isEmpty();
 
 private:
+    Node* createNode(int, string*);
+
     Node *head;
     Node *tail;
 };
