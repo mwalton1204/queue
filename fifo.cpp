@@ -37,21 +37,38 @@ bool Queue::push(int id, string* data) {
 }
 
 bool Queue::pull(Data &tmpData) {
-    return true;
+    bool pulled = false;
+
+    return pulled;
 }
 
 bool Queue::peek(Data &tmpData) {
-    return true;
+    bool peeked = false;
+
+    if(head) {
+        tmpData.id = head->data.id;
+        tmpData.data = head->data.data;
+        peeked = true;
+    }
+
+    return peeked;
 }
 
 bool Queue::isEmpty() {
-    return true;
+    return head == NULL;
 }
 
 void Queue::printQueue() {
     Node* current = tail;
+    cout << "printing queue: \n";
     while(current) {
-        cout << current->data.id << "\n";
+        if(current == head) {
+            cout << "HEAD: " << current->data.id << "\n";
+        } else if (current == tail) {
+            cout << "TAIL: " << current->data.id << "\n";
+        } else {
+            cout << current->data.id << "\n";
+        }
         current = current->next;
     }
 }
