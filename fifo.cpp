@@ -12,7 +12,16 @@ Queue::Queue() {
     tail = NULL;
 }
 
-Queue::~Queue() {}
+Queue::~Queue() {
+    Node* current = tail;
+    while(current) {
+        Node* tmpNode = current->next;
+        delete current;
+        current = tmpNode;
+    }
+    head = NULL;
+    tail = NULL;
+}
 
 bool Queue::push(int id, string* data) {
     bool pushed = false;
