@@ -3,8 +3,10 @@
 
 #include "fifo.h"
 #include <string>
+#include <iostream>
 
 using std::string;
+using std::cout;
 
 //Standard Data Struct
 struct Data {
@@ -29,6 +31,7 @@ public:
     bool pull(Data&);
     bool peek(Data&);
     bool isEmpty();
+    void printQueue();
 
 private:
     Node* createNode(int, string*);

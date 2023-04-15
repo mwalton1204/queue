@@ -8,7 +8,17 @@ Purpose:
 #include "main.h"
 
 int main() {
-    cout << "Hello, World!";
+    Queue queue;
+
+    string tmpString = "hello";
+
+    queue.push(1, &tmpString);
+    queue.push(2, &tmpString);
+    queue.push(3, &tmpString);
+    queue.push(4, &tmpString);
+    queue.push(5, &tmpString);
+
+    queue.printQueue();
 
     return 0;
 }
