@@ -8,4 +8,9 @@ Purpose:
 #ifndef FIFO_MAIN_H
 #define FIFO_MAIN_H
 
+#include "fifo.h"
+#include <iostream>
+
+using std::cout;
+
 #endif //FIFO_MAIN_H
