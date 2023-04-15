@@ -8,6 +8,8 @@ Purpose:
 #ifndef FIFO_MAIN_H
 #define FIFO_MAIN_H
 
+#define MAXTESTQTY 50
+
 #include "fifo.h"
 #include <iostream>
 

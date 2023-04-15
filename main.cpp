@@ -8,129 +8,137 @@ Purpose:
 #include "main.h"
 
 int main() {
+    srand(time(NULL));
+
     Queue queue;
     Data tmpData;
 
-    string tmpString = "./aserg";
-
+    cout << "-------------------\tTESTING INITIALIZED QUEUE\t-------------------\n\n";
     queue.printQueue();
     cout << "\n";
-
     if(queue.isEmpty()) {
-        cout << "empty\n";
+        cout << "QUEUE STATUS: EMPTY\n\n";
     } else {
-        cout << "not empty\n";
+        cout << "QUEUE STATUS: NOT EMPTY\n\n";
     }
 
-    cout << "PEEKING...\n";
-    if(queue.peek(tmpData)) {
-        cout << "ID: " << tmpData.id << "\n";
-        cout << "DATA: " << tmpData.data << "\n";
-    } else {
-        cout << "UNABLE TO PEEK\n\n";
+    cout << "-------------------\tTESTING PUSHING DATA TO QUEUE\t-------------------\n\n";
+
+    for(int i = 0; i < 10; i++) {
+        int newId = (rand() % 50) + 1;
+        string newData = "data";
+
+        cout << "PUSHING [ID: " << newId << " DATA: " << newData << "] TO BACK OF QUEUE ... ";
+        if(queue.push(newId, &newData)) {
+            cout << "PUSHED\n";
+        } else {
+            cout << "NOT PUSHED\n";
+        }
+
+        queue.printQueue();
     }
 
-    cout << "adding new head: 1...\n";
-    if(queue.push(1, &tmpString)) {
-        cout << "added\n";
+    cout << "-------------------\tTESTING PEEKING AND PULLING DATA FROM QUEUE\t-------------------\n\n";
+
+    for(int i = 0; i < 5; i++) {
+        cout << "PEEKING HEAD ... ";
+        if(queue.peek(tmpData)) {
+            cout << "PEEKED [ID: " << tmpData.id << " DATA: " << tmpData.data << "]\n";
+        } else {
+            cout << "UNDERFLOW ERROR\n";
+        }
+
+        cout << "PULLING HEAD ... ";
+        if(queue.pull(tmpData)) {
+            cout << "PULLED [ID: " << tmpData.id << " DATA: " << tmpData.data << "]\n";
+        } else {
+            cout << "UNDERFLOW ERROR\n";
+        }
+
+        queue.printQueue();
+    }
+
+    cout << "-------------------\tEMPTYING QUEUE\t-------------------\n\n";
+
+    while(!queue.isEmpty()) {
+        queue.pull(tmpData);
     }
 
     queue.printQueue();
-
-    cout << "PEEKING...\n";
-    if(queue.peek(tmpData)) {
-        cout << "ID: " << tmpData.id << "\n";
-        cout << "DATA: " << tmpData.data << "\n";
-    } else {
-        cout << "UNABLE TO PEEK";
-    }
-
     cout << "\n";
-    cout << "adding new node: 2...\n";
-    if(queue.push(2, &tmpString)) {
-        cout << "added\n";
-    }
-
-    queue.printQueue();
-
-    cout << "PEEKING...\n";
-    if(queue.peek(tmpData)) {
-        cout << "ID: " << tmpData.id << "\n";
-        cout << "DATA: " << tmpData.data << "\n";
-    } else {
-        cout << "UNABLE TO PEEK";
-    }
-
-    cout << "\n";
-    cout << "adding new node: 3...\n";
-    if(queue.push(3, &tmpString)) {
-        cout << "added\n";
-    }
-
-    queue.printQueue();
-
-    cout << "PEEKING...\n";
-    if(queue.peek(tmpData)) {
-        cout << "ID: " << tmpData.id << "\n";
-        cout << "DATA: " << tmpData.data << "\n";
-    } else {
-        cout << "UNABLE TO PEEK";
-    }
-
-    cout << "\n";
-    cout << "adding new node: 4...\n";
-    if(queue.push(4, &tmpString)) {
-        cout << "added\n";
-    }
-
-    queue.printQueue();
-
-    cout << "PEEKING...\n";
-    if(queue.peek(tmpData)) {
-        cout << "ID: " << tmpData.id << "\n";
-        cout << "DATA: " << tmpData.data << "\n";
-    } else {
-        cout << "UNABLE TO PEEK";
-    }
-
-    cout << "\n";
-    cout << "adding new node: 5...\n";
-    if(queue.push(5, &tmpString)) {
-        cout << "added\n";
-    }
-
-    queue.printQueue();
-
-    cout << "PEEKING...\n";
-    if(queue.peek(tmpData)) {
-        cout << "ID: " << tmpData.id << "\n";
-        cout << "DATA: " << tmpData.data << "\n";
-    } else {
-        cout << "UNABLE TO PEEK";
-    }
-
-    cout << "\n";
-
     if(queue.isEmpty()) {
-        cout << "empty\n";
+        cout << "QUEUE STATUS: EMPTY\n\n";
     } else {
-        cout << "not empty\n";
+        cout << "QUEUE STATUS: NOT EMPTY\n\n";
     }
 
-    cout << "\n\n\nTESTING PULL\n\n";
+    cout << "-------------------\tREFILLING QUEUE\t-------------------\n\n";
 
-    queue.printQueue();
-    cout << "\n";
+    for(int i = 0; i < 10; i++) {
+        int newId = (rand() % 50) + 1;
+        string newData = "data";
 
-    queue.pull(tmpData);
+        cout << "PUSHING [ID: " << newId << " DATA: " << newData << "] TO BACK OF QUEUE ... ";
+        if(queue.push(newId, &newData)) {
+            cout << "PUSHED\n";
+        } else {
+            cout << "NOT PUSHED\n";
+        }
 
-    queue.printQueue();
-    cout << "\n";
+        queue.printQueue();
+    }
 
-    queue.pull(tmpData);
+    int testQty = (rand() % MAXTESTQTY) + 1;
+    cout << "-------------------\tPERFORMING " << testQty << " RANDOMIZED OPERATIONS ON QUEUE\t-------------------\n\n";
 
-    queue.printQueue();
-    cout << "\n";
+    for(int i = 0; i < testQty; i++) {
+        int operation = (rand() % 3) + 1;
+
+        switch(operation) {
+            case 1: { //push
+                int newId = (rand() % 50) + 1;
+                string newData = "data";
+
+                cout << "PUSHING [ID: " << newId << " DATA: " << newData << "] TO BACK OF QUEUE ... ";
+                if (queue.push(newId, &newData)) {
+                    cout << "PUSHED\n";
+                } else {
+                    cout << "NOT PUSHED\n";
+                }
+
+                break;
+            }
+            case 2: //peek
+                cout << "PEEKING HEAD ... ";
+                if(queue.peek(tmpData)) {
+                    cout << "PEEKED [ID: " << tmpData.id << " DATA: " << tmpData.data << "]\n";
+                } else {
+                    cout << "UNDERFLOW ERROR\n";
+                }
+
+                break;
+            case 3: //pull
+                cout << "PULLING HEAD ... ";
+                if(queue.pull(tmpData)) {
+                    cout << "PULLED [ID: " << tmpData.id << " DATA: " << tmpData.data << "]\n";
+                } else {
+                    cout << "UNDERFLOW ERROR\n";
+                }
+
+                break;
+        }
+
+        queue.printQueue();
+        cout << "\n";
+        if(queue.isEmpty()) {
+            cout << "QUEUE STATUS: EMPTY\n\n";
+        } else {
+            cout << "QUEUE STATUS: NOT EMPTY\n\n";
+        }
+
+    }
+
+
 
     return 0;
 }

@@ -90,7 +90,7 @@ bool Queue::isEmpty() {
 
 void Queue::printQueue() {
     Node* current = tail;
-    cout << "PRINTING QUEUE: \n";
+    cout << "\nPRINTING QUEUE: \n";
     while(current) {
         if(current == head) {
             cout << current->data.id << "\t(HEAD)\n\n";
