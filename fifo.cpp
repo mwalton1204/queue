@@ -26,6 +26,6 @@ bool Queue::peek(Data &tmpData) {
     return true;
 }
 
-bool Queue isEmpty() {
+bool Queue::isEmpty() {
     return true;
 }
