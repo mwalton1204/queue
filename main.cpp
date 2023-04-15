@@ -117,7 +117,20 @@ int main() {
         cout << "not empty\n";
     }
 
+    cout << "\n\n\nTESTING PULL\n\n";
 
+    queue.printQueue();
+    cout << "\n";
+
+    queue.pull(tmpData);
+
+    queue.printQueue();
+    cout << "\n";
+
+    queue.pull(tmpData);
+
+    queue.printQueue();
+    cout << "\n";
 
     return 0;
 }

@@ -26,10 +26,12 @@ bool Queue::push(int id, string* data) {
         } else if (head == tail) {
             newNode->next = head;
             tail = newNode;
+            head->prev = tail;
             pushed = true;
         } else {
             newNode->next = tail;
             tail = newNode;
+            tail->next->prev = tail;
             pushed = true;
         }
     }
@@ -38,6 +40,16 @@ bool Queue::push(int id, string* data) {
 
 bool Queue::pull(Data &tmpData) {
     bool pulled = false;
+
+    if(head) {
+        tmpData.id = head->data.id;
+        tmpData.data = head->data.data;
+
+        Node* tmpNode = head;
+        head = head->prev;
+        head->next = NULL;
+        delete tmpNode;
+    }
 
     return pulled;
 }
@@ -74,6 +86,6 @@ void Queue::printQueue() {
 }
 
 Node* Queue::createNode(int newId, string* newData) {
-    Node *newNode = new Node{{newId, *newData}, NULL};
+    Node *newNode = new Node{{newId, *newData}, NULL, NULL};
     return newNode;
 }
