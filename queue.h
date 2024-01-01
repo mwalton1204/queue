@@ -1,7 +1,6 @@
-#ifndef FIFO_H
-#define FIFO_H
+#ifndef QUEUE_H
+#define QUEUE_H
 
-#include "fifo.h"
 #include <string>
 #include <iostream>
 
@@ -41,4 +40,4 @@ private:
     Node *tail;
 };
 
-#endif //FIFO_H
+#endif //QUEUE_H
