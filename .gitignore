@@ -1,9 +1,8 @@
-#ignore everything
+# Ignore everything
 *
-*/
 
-#unignore what we want to track
+# Unignore specific file types
 !*.cpp
 !*.h
 !.gitignore
-!*.md
+!README.md
