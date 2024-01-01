@@ -5,7 +5,7 @@ Purpose:
  - Design FIFO Queue ADT
 **********************/
 
-#include "fifo.h"
+#include "queue.h"
 
 Queue::Queue() {
     head = NULL;
