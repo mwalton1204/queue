@@ -5,14 +5,14 @@ Purpose:
  - Design FIFO Queue ADT
 **********************/
 
-#ifndef FIFO_MAIN_H
-#define FIFO_MAIN_H
+#ifndef MAIN_H
+#define MAIN_H
 
 #define MAXTESTQTY 50
 
-#include "fifo.h"
+#include "QUEUE.h"
 #include <iostream>
 
 using std::cout;
 
-#endif //FIFO_MAIN_H
+#endif //MAIN_H
